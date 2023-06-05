@@ -17,7 +17,7 @@ let fontList = [
 	"Garamond",
 	"Georgia",
 	"Courier New",
-	"cursive",
+	"Cursive",
 ]
 
 // Initial settings
@@ -28,7 +28,58 @@ const initializer = () => {
 	highlighter(spacingButtons, true)
 	highlighter(formatButtons, false)
 	highlighter(scriptButtons, true)
+
+	// options for font names
+	fontList.map((value) => {
+		let option = document.createElement("option")
+		option.value = value
+		option.innerHTML = value
+		fontName.appendChild(option)
+	})
+
+	// options for font size
+	for (let i = 1; i <= 7; i++) {
+		let option = document.createElement("option")
+		option.value = i
+		option.innerHTML = i
+		fontSize.appendChild(option)
+	}
+
+	//default size
+	fontSize.value = 3
 }
+
+// main logic
+const modifyText = (command, defaultUi, value) => {
+	// execCommand executes command on selected text
+	document.execCommand(command, defaultUi, value)
+}
+
+// for basic operations - don't need value parameters
+optionsButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		modifyText(button.id, false, null)
+	})
+})
+
+// for operations with values
+advOptionButtons.forEach((button) => {
+	button.addEventListener("change", () => {
+		modifyText(button.id, false, button.value)
+	})
+})
+
+//link
+linkButton.addEventListener("click", () => {
+	let userLink = prompt("Enter a URL")
+	// if link has http then pass, else add https
+	if (/http/i.test(userLink)) {
+		modifyText(linkButton.id, false, userLink)
+	} else {
+		userLink = "http://" + userLink
+		modifyText(linkButton.id, false, userLink)
+	}
+})
 
 // Highlight clicked button
 const highlighter = (classname, needsRemoval) => {
