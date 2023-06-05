@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 
+
+
 *{
     padding: 0;
     margin: 0;
@@ -8,7 +10,8 @@
 }
 
 body{
-    background-color: #C38154;
+    /* background-color: #C38154; */
+    background-color: #FA9884;
 }
 
 .container{
@@ -40,4 +43,48 @@ button{
     background-color: #fff;
     outline: none;
     color: #020929;
+}
+
+select{
+    padding: 7px;
+    border: 1px solid #020929;
+    border-radius: 3px;
+}
+
+.options label, .options select{
+    font-family: 'Poppins',sans-serif;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="color"] {
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    appearance: none;
+    background-color: transparent;
+    width: 28px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #fff 0 0 0 3px #020929;
+}
+input[type="color"]::-moz-color-swatch {
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #fff 0 0 0 3px #020929;
+}
+
+#textInput {
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    height: 50vh;
+    
 }
